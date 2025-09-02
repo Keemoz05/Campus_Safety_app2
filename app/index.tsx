@@ -23,7 +23,7 @@ export default function Home() {
         paddingTop: Platform.OS === "android" ? StatusBar.currentHeight : 0,
       }}
     >
-      <ScrollView className="flex-1 px-4 py-6">
+      <ScrollView className="px-4 py-6">
         {/* Header */}
         <View className="flex-row items-center mb-6">
           <View className="w-12 h-12 bg-red-600 rounded-full items-center justify-center mr-3">
@@ -119,9 +119,49 @@ export default function Home() {
                 </Text>
               </TouchableOpacity>
             </Link>
+
+            <Link href="/tabs/Settings" asChild>
+              <TouchableOpacity className="w-[48%] aspect-square bg-gray-200 rounded-xl items-center justify-center mb-4">
+                <Text style={{ fontSize: 32 }} role="img" aria-label="settings">⚙️</Text>
+                <Text className="text-gray-800 font-medium mt-2 text-center">
+                  Settings
+                </Text>
+              </TouchableOpacity>
+            </Link>
+
+
+
           </View>
         </View>
       </ScrollView>
+
+      {/* Bottom Navigation Bar */}
+      <View className="flex-row justify-around items-center bg-white border-t border-gray-200 py-2">
+        <Link href="/" asChild>
+          <TouchableOpacity className="items-center">
+            <House size={24} color="#b91c1c" />
+            <Text className="text-xs text-gray-700 mt-1">Home</Text>
+          </TouchableOpacity>
+        </Link>
+        <Link href="/tabs/CampusMaps" asChild>
+          <TouchableOpacity className="items-center">
+            <Map size={24} color="#15803d" />
+            <Text className="text-xs text-gray-700 mt-1">Maps</Text>
+          </TouchableOpacity>
+        </Link>
+        <Link href="/tabs/ReportATip" asChild>
+          <TouchableOpacity className="items-center">
+            <FileText size={24} color="#ca8a04" />
+            <Text className="text-xs text-gray-700 mt-1">Report</Text>
+          </TouchableOpacity>
+        </Link>
+        <Link href="/tabs/Settings" asChild>
+          <TouchableOpacity className="items-center">
+            <Text style={{ fontSize: 24 }} role="img" aria-label="settings">⚙️</Text>
+            <Text className="text-xs text-gray-700 mt-1">Settings</Text>
+          </TouchableOpacity>
+        </Link>
+      </View>
     </SafeAreaView>
   );
 }
