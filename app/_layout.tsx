@@ -1,11 +1,14 @@
 import { Stack } from "expo-router";
+import { DarkModeProvider } from "../DarkModeContext";
 
 export default function Layout() {
   return (
-    <Stack
-      screenOptions={{
-        headerShown: false,
-      }}
-    />
+    <DarkModeProvider>
+      <Stack
+        screenOptions={{
+          headerShown: false,
+        }}
+      />
+    </DarkModeProvider>
   );
 }

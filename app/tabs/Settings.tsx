@@ -1,9 +1,10 @@
 import { useState } from "react";
 import { SafeAreaView, ScrollView, Switch, Text, View } from "react-native";
+import { useDarkMode } from "../../DarkModeContext";
 
 export default function Settings() {
+  const { darkMode, setDarkMode } = useDarkMode();
   const [notificationsEnabled, setNotificationsEnabled] = useState(true);
-  const [darkMode, setDarkMode] = useState(false);
 
   const bgColor = darkMode ? "bg-gray-900" : "bg-gray-50";
   const cardColor = darkMode ? "bg-gray-800" : "bg-white";
@@ -12,13 +13,13 @@ export default function Settings() {
 
   return (
     <SafeAreaView className={`flex-1 ${bgColor}`}>
-      <ScrollView className="flex-1 px-4 py-6">
-        <Text className={`text-2xl font-bold ${textColor} mb-6`}>Settings</Text>
+      <ScrollView className="flex-1 px-5 py-8">
+        <Text className={`text-2xl font-bold ${textColor} mb-8`}>Settings</Text>
 
-        <View className={`${cardColor} rounded-2xl shadow-md p-4 mb-4`}>
-          <Text className={`text-lg font-semibold ${textColor} mb-2`}>Preferences</Text>
+        <View className={`${cardColor} rounded-2xl shadow-lg p-5 mb-6`}>
+          <Text className={`text-lg font-semibold ${textColor} mb-4`}>Preferences</Text>
           
-          <View className="flex-row items-center justify-between mb-4">
+          <View className="flex-row items-center justify-between mb-5">
             <Text className={`${subTextColor} text-base`}>Enable Notifications</Text>
             <Switch
               value={notificationsEnabled}
@@ -35,7 +36,7 @@ export default function Settings() {
           </View>
         </View>
 
-        <View className={`${cardColor} rounded-2xl shadow-md p-4`}>
+        <View className={`${cardColor} rounded-2xl shadow-lg p-5`}>
           <Text className={`text-lg font-semibold ${textColor} mb-2`}>About</Text>
           <Text className={`${subTextColor} text-base mb-1`}>
             Campus Safety App v1.0
