@@ -1,6 +1,6 @@
 import Constants from "expo-constants";
 import { Link } from "expo-router";
-import { EllipsisVertical, FileText, Heart, House, Map, Shield, Users } from "lucide-react-native";
+import { Cog, EllipsisVertical, FileText, Heart, House, Map, Shield, UserPlus, Users } from "lucide-react-native";
 import { useState } from "react";
 import {
   Alert,
@@ -18,8 +18,8 @@ import {
   TouchableOpacity,
   View,
 } from "react-native";
-import { WebView } from "react-native-webview";
 import { useDarkMode } from "../DarkModeContext";
+
 export default function Home() {
   const { darkMode } = useDarkMode();
   const bgColor = darkMode ? "bg-gray-900" : "bg-gray-50";
@@ -87,8 +87,6 @@ export default function Home() {
         paddingTop: Platform.OS === "android" ? StatusBar.currentHeight : 0,
       }}
     >
-
-
       {/* Sign In Modal */}
       <Modal
         animationType="slide"
@@ -262,24 +260,15 @@ export default function Home() {
             </Text>
           </View>
         )}
-    <View style={styles.screen}>
-      <ScrollView contentContainerStyle={styles.scroll}>
-        <View style={styles.box}>
-          <WebView
-            style={styles.webview}
-            source={{ uri: "https://forms.office.com/Pages/ResponsePage.aspx?id=z18LfsQS_06WtkZk8l3H2gpFnYadRo9OgwCYHC05XnBUQkpKUkFYRE40Uko0OEEzVjlSWDgxN1VDUi4u&fbclid=PAZXh0bgNhZW0CMTEAAadDOQyoN1fU3V_hPZr994qSQ7LnbIg5_EjgQiEYpmwiHSZuF0ij__kFp9ue5w_aem_RIiWs-76K7Ev__-CxDmWkQ" }}
-          />
-        </View>
-      </ScrollView>
-    </View>   
+
         {/* Title Section */}
         <Text className="text-3xl font-extrabold text-red-700 mb-1">
-          🚨 In an Emergency?
+          🚨 Emergency?
         </Text>
         <Text className={`text-base text-center ${textColor} mb-7`}>
           If you are in an emergency, call the emergency contacts now.
         </Text>
-        
+
         {/* Emergency Buttons */}
         <View className="w-full mb-10">
           <TouchableOpacity
@@ -365,6 +354,61 @@ export default function Home() {
           </View>
         </View>
       </ScrollView>
+
+      {/* Bottom Navigation Bar */}
+      <View
+        className={`flex-row justify-around items-center ${cardColor} border-t border-gray-200 py-3 shadow-lg`}
+      >
+        <Link href="/" asChild>
+          <TouchableOpacity className="items-center active:opacity-80">
+            <House size={24} color="#b91c1c" />
+            <Text
+              className={`text-xs mt-1 ${
+                darkMode ? "text-white font-bold" : "text-gray-700"
+              }`}
+            >
+              Home
+            </Text>
+          </TouchableOpacity>
+        </Link>
+        <Link href="/tabs/CampusMaps" asChild>
+          <TouchableOpacity className="items-center active:opacity-80">
+            <Map size={24} color="#15803d" />
+            <Text
+              className={`text-xs mt-1 ${
+                darkMode ? "text-white font-bold" : "text-gray-700"
+              }`}
+            >
+              Maps
+            </Text>
+          </TouchableOpacity>
+        </Link>
+        {/* Friends List navigation button */}
+        <Link href="/tabs/FriendsList" asChild>
+          <TouchableOpacity className="items-center active:opacity-80">
+            <UserPlus size={24} color="#2563eb" />
+            <Text
+              className={`text-xs mt-1 ${
+                darkMode ? "text-white font-bold" : "text-gray-700"
+              }`}
+            >
+              Friends
+            </Text>
+          </TouchableOpacity>
+        </Link>
+        <Link href="/tabs/Settings" asChild>
+          <TouchableOpacity className="items-center active:opacity-80">
+            <Cog size={24} color="#a78bfa" />
+            <Text
+              className={`text-xs mt-1 ${
+                darkMode ? "text-white font-bold" : "text-gray-700"
+              }`}
+            >
+              Settings
+            </Text>
+          </TouchableOpacity>
+        </Link>
+      </View>
     </SafeAreaView>
   );
 }
