@@ -1,10 +1,29 @@
-import { useState } from "react";
-import { SafeAreaView, ScrollView, Switch, Text, View } from "react-native";
+import { useState, useEffect } from "react";
+import { SafeAreaView, ScrollView, Switch, Text, View, Button } from "react-native";
 import { useDarkMode } from "../../DarkModeContext";
+import { schedulePushNotification } from "../../utils/notifications";
+import { getNotificationsEnabled, setNotificationsEnabled as saveNotificationPreference } from "../../utils/storage";
+import * as Notifications from 'expo-notifications';
 
 export default function Settings() {
   const { darkMode, setDarkMode } = useDarkMode();
   const [notificationsEnabled, setNotificationsEnabled] = useState(true);
+
+  useEffect(() => {
+    const loadPreference = async () => {
+      const preference = await getNotificationsEnabled();
+      setNotificationsEnabled(preference);
+    };
+    loadPreference();
+  }, []);
+
+  const handleNotificationToggle = async (value: boolean) => {
+    setNotificationsEnabled(value);
+    await saveNotificationPreference(value);
+    if (!value) {
+      await Notifications.cancelAllScheduledNotificationsAsync();
+    }
+  };
 
   const bgColor = darkMode ? "bg-gray-900" : "bg-gray-50";
   const cardColor = darkMode ? "bg-gray-800" : "bg-white";
@@ -23,7 +42,7 @@ export default function Settings() {
             <Text className={`${subTextColor} text-base`}>Enable Notifications</Text>
             <Switch
               value={notificationsEnabled}
-              onValueChange={setNotificationsEnabled}
+              onValueChange={handleNotificationToggle}
             />
           </View>
 
@@ -34,6 +53,11 @@ export default function Settings() {
               onValueChange={setDarkMode}
             />
           </View>
+        </View>
+
+        <View className={`${cardColor} rounded-2xl shadow-lg p-5 mb-6`}>
+          <Text className={`text-lg font-semibold ${textColor} mb-4`}>Developer</Text>
+          <Button title="Test Notification" onPress={async () => { await schedulePushNotification(); }} />
         </View>
 
         <View className={`${cardColor} rounded-2xl shadow-lg p-5`}>
