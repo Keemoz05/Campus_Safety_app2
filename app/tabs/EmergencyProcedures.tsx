@@ -6,7 +6,7 @@ export default function Page1() {
 
   return (
     <ScrollView>
-    <View className="flex-1 bg-red-200 px-4 pt-10">
+    <View className="flex-1 bg-red-200 px-4 pt-12">
       {/* Top-left Back Button */}
       <TouchableOpacity
         onPress={() => router.back()}
@@ -16,7 +16,7 @@ export default function Page1() {
       </TouchableOpacity>
 
       {/* Content */}
-      <View className="flex-1 items-center justify-center">
+      <View className="flex-1 items-center justify-center pt-10"  >
         <Text className="text-2xl mb-4">Emergency Procedures</Text>
         <Text className="text-lg text-center px-2 text-gray-800">
           Be sure you are comfortable with all the emergency procedures below
@@ -26,7 +26,7 @@ export default function Page1() {
 
 
             <Link href="/tabs/EmergencyProceduresTabs/GettingAssistance" asChild>
-              <TouchableOpacity className="w-[48%] aspect-square bg-green-100 rounded-xl items-center justify-center mb-4">
+              <TouchableOpacity className="w-[48%] aspect-square bg-green-100 rounded-xl items-center justify-center mb-4 mt-5">
                 <Map size={32} color="#15803d" />
                 <Text className="text-gray-800 font-medium mt-2 text-center">
                   Life Aid
