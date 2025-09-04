@@ -12,71 +12,69 @@ export default function EmergencyProcedures() {
 
   return (
     <ScrollView className={`flex-1 ${bgColor}`}>
-      <View className={`pt-12 pb-5 ${headerBg} items-center border-b border-gray-200 shadow`}>
+      {/* Header */}
+      <View
+        className={`pt-12 pb-5 ${headerBg} items-center border-b border-gray-200 shadow`}
+      >
         <Text className="text-2xl font-bold text-white tracking-wider">
           Emergency Procedures
         </Text>
       </View>
+
+      {/* Content */}
       <View className="flex-1 p-6 items-center">
+        {/* Back Button */}
         <TouchableOpacity
           onPress={() => router.back()}
           className="absolute top-2.5 left-2.5 bg-white px-4 py-2 rounded-xl shadow active:opacity-80"
         >
           <Text className="text-red-600 text-lg font-semibold">← Back</Text>
         </TouchableOpacity>
+
         <Text className={`text-lg mb-6 mt-8 text-center ${textColor}`}>
           Be sure you are comfortable with all the emergency procedures below
           before heading out! These plans are available offline.
         </Text>
-        <Link
-          href="/tabs/EmergencyProceduresTabs/GettingAssistance"
-          asChild
-        >
-          <TouchableOpacity className="w-40 aspect-square bg-green-100 rounded-2xl items-center justify-center mb-3 shadow active:opacity-80">
-            <Map size={32} color="#15803d" />
-            <Text className="text-green-800 font-semibold text-lg mt-0.5 text-center">
-              Life Aid
-            </Text>
-          </TouchableOpacity>
-        </Link>
+
+        {/* Buttons Row */}
+        <View className="flex-row flex-wrap justify-center gap-4">
+          <Link href="/tabs/EmergencyProceduresTabs/GettingAssistance" asChild>
+            <TouchableOpacity className="w-40 aspect-square bg-green-100 rounded-2xl items-center justify-center shadow active:opacity-80">
+              <Map size={32} color="#15803d" />
+              <Text className="text-green-800 font-semibold text-lg mt-0.5 text-center">
+                Life Aid
+              </Text>
+            </TouchableOpacity>
+          </Link>
+
+          <Link href="/tabs/EmergencyProceduresTabs/GettingAssistance" asChild>
+            <TouchableOpacity className="w-40 aspect-square bg-green-100 rounded-2xl items-center justify-center shadow active:opacity-80">
+              <Map size={32} color="#15803d" />
+              <Text className="text-green-800 font-semibold text-lg mt-0.5 text-center">
+                Medical Emergency
+              </Text>
+            </TouchableOpacity>
+          </Link>
+
+          <Link href="/tabs/EmergencyProceduresTabs/GettingAssistance" asChild>
+            <TouchableOpacity className="w-40 aspect-square bg-green-100 rounded-2xl items-center justify-center shadow active:opacity-80">
+              <Map size={32} color="#15803d" />
+              <Text className="text-green-800 font-semibold text-lg mt-0.5 text-center">
+                Fire & Smoke
+              </Text>
+            </TouchableOpacity>
+          </Link>
+
+          <Link href="/tabs/EmergencyProceduresTabs/GettingAssistance" asChild>
+            <TouchableOpacity className="w-40 aspect-square bg-green-100 rounded-2xl items-center justify-center shadow active:opacity-80">
+              <Map size={32} color="#15803d" />
+              <Text className="text-green-800 font-semibold text-lg mt-0.5 text-center">
+                Sexual Assault / Violence
+              </Text>
+            </TouchableOpacity>
+          </Link>
+        </View>
       </View>
-
-
-            <Link href="/tabs/EmergencyProceduresTabs/GettingAssistance" asChild>
-              <TouchableOpacity className="w-[10%] aspect-square bg-green-100 rounded-xl items-center justify-center mb-4">
-                <Map size={32} color="#15803d" />
-                <Text className="text-gray-800 font-medium mt-2 text-center">
-                  Life Aid
-                </Text>
-              </TouchableOpacity>
-            </Link>
-
-            <Link href="/tabs/EmergencyProceduresTabs/GettingAssistance" asChild>
-              <TouchableOpacity className="w-[10%] aspect-square bg-green-100 rounded-xl items-center justify-center mb-4">
-                <Map size={32} color="#15803d" />
-                <Text className="text-gray-800 font-medium mt-2 text-center">
-                  Medical Emergency
-                </Text>
-              </TouchableOpacity>
-            </Link>
-
-            <Link href="/tabs/EmergencyProceduresTabs/GettingAssistance" asChild>
-              <TouchableOpacity className="w-[10%] aspect-square bg-green-100 rounded-xl items-center justify-center mb-4">
-                <Map size={32} color="#15803d" />
-                <Text className="text-gray-800 font-medium mt-2 text-center">
-                  Fire And Smoke
-                </Text>
-              </TouchableOpacity>
-            </Link>
-
-              <Link href="/tabs/EmergencyProceduresTabs/GettingAssistance" asChild>
-              <TouchableOpacity className="w-[10%] aspect-square bg-green-100 rounded-xl items-center justify-center mb-4">
-                <Map size={32} color="#15803d" />
-                <Text className="text-gray-800 font-medium mt-2 text-center">
-                  Sexual Assault/Violence
-                </Text>
-              </TouchableOpacity>
-            </Link>
     </ScrollView>
   );
 }

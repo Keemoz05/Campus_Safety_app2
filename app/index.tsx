@@ -18,8 +18,8 @@ import {
   TouchableOpacity,
   View,
 } from "react-native";
+import { WebView } from "react-native-webview";
 import { useDarkMode } from "../DarkModeContext";
-
 export default function Home() {
   const { darkMode } = useDarkMode();
   const bgColor = darkMode ? "bg-gray-900" : "bg-gray-50";
@@ -87,6 +87,8 @@ export default function Home() {
         paddingTop: Platform.OS === "android" ? StatusBar.currentHeight : 0,
       }}
     >
+
+
       {/* Sign In Modal */}
       <Modal
         animationType="slide"
@@ -260,15 +262,24 @@ export default function Home() {
             </Text>
           </View>
         )}
-
+    <View style={styles.screen}>
+      <ScrollView contentContainerStyle={styles.scroll}>
+        <View style={styles.box}>
+          <WebView
+            style={styles.webview}
+            source={{ uri: "https://forms.office.com/Pages/ResponsePage.aspx?id=z18LfsQS_06WtkZk8l3H2gpFnYadRo9OgwCYHC05XnBUQkpKUkFYRE40Uko0OEEzVjlSWDgxN1VDUi4u&fbclid=PAZXh0bgNhZW0CMTEAAadDOQyoN1fU3V_hPZr994qSQ7LnbIg5_EjgQiEYpmwiHSZuF0ij__kFp9ue5w_aem_RIiWs-76K7Ev__-CxDmWkQ" }}
+          />
+        </View>
+      </ScrollView>
+    </View>   
         {/* Title Section */}
         <Text className="text-3xl font-extrabold text-red-700 mb-1">
-          🚨 Emergency?
+          🚨 In an Emergency?
         </Text>
         <Text className={`text-base text-center ${textColor} mb-7`}>
           If you are in an emergency, call the emergency contacts now.
         </Text>
-
+        
         {/* Emergency Buttons */}
         <View className="w-full mb-10">
           <TouchableOpacity
