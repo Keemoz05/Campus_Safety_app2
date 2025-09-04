@@ -1,3 +1,4 @@
+import Constants from "expo-constants";
 import { Link } from "expo-router";
 import { Cog, EllipsisVertical, FileText, Heart, House, Map, Shield, UserPlus, Users } from "lucide-react-native";
 import { useState } from "react";
@@ -11,6 +12,7 @@ import {
   SafeAreaView,
   ScrollView,
   StatusBar,
+  StyleSheet,
   Text,
   TextInput,
   TouchableOpacity,
@@ -78,6 +80,7 @@ export default function Home() {
   };
 
   return (
+
     <SafeAreaView
       className={`flex-1 ${bgColor}`}
       style={{
@@ -329,7 +332,8 @@ export default function Home() {
                 </Text>
               </TouchableOpacity>
             </Link>
-
+            
+            
             <Link href="/tabs/SupportResources" asChild>
               <TouchableOpacity className="w-[48%] aspect-square bg-pink-100 rounded-xl items-center justify-center mb-4 active:opacity-80 shadow">
                 <Heart size={32} color="#be123c" />
@@ -408,3 +412,26 @@ export default function Home() {
     </SafeAreaView>
   );
 }
+
+const styles = StyleSheet.create({
+  screen: {
+    flex: 1,
+    marginTop: Constants.statusBarHeight,
+    backgroundColor: "#f2f2f2",
+  },
+  scroll: {
+    alignItems: "center",
+    padding: 16,
+  },
+  box: {
+    width: "90%",
+    height: 300, // small fixed box
+    borderWidth: 1,
+    borderColor: "#ccc",
+    borderRadius: 10,
+    overflow: "hidden",
+  },
+  webview: {
+    flex: 1, // fill the box only
+  },
+});

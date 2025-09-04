@@ -43,10 +43,37 @@ export default function EmergencyProcedures() {
 
 
             <Link href="/tabs/EmergencyProceduresTabs/GettingAssistance" asChild>
-              <TouchableOpacity className="w-[48%] aspect-square bg-green-100 rounded-xl items-center justify-center mb-4 mt-5">
+              <TouchableOpacity className="w-[10%] aspect-square bg-green-100 rounded-xl items-center justify-center mb-4">
                 <Map size={32} color="#15803d" />
                 <Text className="text-gray-800 font-medium mt-2 text-center">
                   Life Aid
+                </Text>
+              </TouchableOpacity>
+            </Link>
+
+            <Link href="/tabs/EmergencyProceduresTabs/GettingAssistance" asChild>
+              <TouchableOpacity className="w-[10%] aspect-square bg-green-100 rounded-xl items-center justify-center mb-4">
+                <Map size={32} color="#15803d" />
+                <Text className="text-gray-800 font-medium mt-2 text-center">
+                  Medical Emergency
+                </Text>
+              </TouchableOpacity>
+            </Link>
+
+            <Link href="/tabs/EmergencyProceduresTabs/GettingAssistance" asChild>
+              <TouchableOpacity className="w-[10%] aspect-square bg-green-100 rounded-xl items-center justify-center mb-4">
+                <Map size={32} color="#15803d" />
+                <Text className="text-gray-800 font-medium mt-2 text-center">
+                  Fire And Smoke
+                </Text>
+              </TouchableOpacity>
+            </Link>
+
+              <Link href="/tabs/EmergencyProceduresTabs/GettingAssistance" asChild>
+              <TouchableOpacity className="w-[10%] aspect-square bg-green-100 rounded-xl items-center justify-center mb-4">
+                <Map size={32} color="#15803d" />
+                <Text className="text-gray-800 font-medium mt-2 text-center">
+                  Sexual Assault/Violence
                 </Text>
               </TouchableOpacity>
             </Link>
