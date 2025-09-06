@@ -1,4 +1,3 @@
-import Constants from "expo-constants";
 import { Link } from "expo-router";
 import { EllipsisVertical, FileText, Heart, House, Map, Shield, Users } from "lucide-react-native";
 import { useState } from "react";
@@ -12,13 +11,11 @@ import {
   SafeAreaView,
   ScrollView,
   StatusBar,
-  StyleSheet,
   Text,
   TextInput,
   TouchableOpacity,
-  View,
+  View
 } from "react-native";
-import { WebView } from "react-native-webview";
 import { useDarkMode } from "../DarkModeContext";
 export default function Home() {
   const { darkMode } = useDarkMode();
@@ -262,16 +259,7 @@ export default function Home() {
             </Text>
           </View>
         )}
-    <View style={styles.screen}>
-      <ScrollView contentContainerStyle={styles.scroll}>
-        <View style={styles.box}>
-          <WebView
-            style={styles.webview}
-            source={{ uri: "https://forms.office.com/Pages/ResponsePage.aspx?id=z18LfsQS_06WtkZk8l3H2gpFnYadRo9OgwCYHC05XnBUQkpKUkFYRE40Uko0OEEzVjlSWDgxN1VDUi4u&fbclid=PAZXh0bgNhZW0CMTEAAadDOQyoN1fU3V_hPZr994qSQ7LnbIg5_EjgQiEYpmwiHSZuF0ij__kFp9ue5w_aem_RIiWs-76K7Ev__-CxDmWkQ" }}
-          />
-        </View>
-      </ScrollView>
-    </View>   
+
         {/* Title Section */}
         <Text className="text-3xl font-extrabold text-red-700 mb-1">
           🚨 In an Emergency?
@@ -369,25 +357,3 @@ export default function Home() {
   );
 }
 
-const styles = StyleSheet.create({
-  screen: {
-    flex: 1,
-    marginTop: Constants.statusBarHeight,
-    backgroundColor: "#f2f2f2",
-  },
-  scroll: {
-    alignItems: "center",
-    padding: 16,
-  },
-  box: {
-    width: "90%",
-    height: 300, // small fixed box
-    borderWidth: 1,
-    borderColor: "#ccc",
-    borderRadius: 10,
-    overflow: "hidden",
-  },
-  webview: {
-    flex: 1, // fill the box only
-  },
-});
