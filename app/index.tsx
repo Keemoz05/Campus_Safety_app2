@@ -39,8 +39,8 @@ export default function Home() {
 
   //dummy bulletin data
   const [bulletins] = useState([
-  { id: "1", title: "Suspicious Activity", description: "Sus individual spotted gooning near library, 12 PM.", time: "5h ago" },
-  { id: "2", title: "Lost Wallet", description: "Black Note reported near cafeteria.", time: "5h ago" },
+  { id: "1", title: "Suspicious Activity", description: "Sus individual spotted near library, 12 AM.", time: "5h ago" },
+  { id: "2", title: "Lost Wallet", description: "Black wallet reported near cafeteria.", time: "5h ago" },
   { id: "3", title: "Entrance Obstruction", description: "Maintenance at SHDL tomorrow, use backdoor for entry.", time: "1d ago" },
   ]);
   
