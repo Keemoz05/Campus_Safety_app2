@@ -19,12 +19,11 @@ A **one-stop campus safety mobile application** designed to help students and st
 
 🔗 [Preview on Web](https://campus-safety-app2--8d5wnn6k7d.expo.app/)  
 
-Or scan the QR code below to open in **Expo Go** on your mobile device:  
+Or scan the QR code below on your mobile device:  
 
 <p align="center">
   <img src="https://github.com/user-attachments/assets/7c4e8af4-2640-48cc-842c-9c8c2b467803" alt="QR Code" width="200"/>
 </p>
----
 
 ## ⚠️ Notes
 
