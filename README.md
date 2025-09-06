@@ -21,8 +21,9 @@ A **one-stop campus safety mobile application** designed to help students and st
 
 Or scan the QR code below to open in **Expo Go** on your mobile device:  
 
-![QR Code](https://github.com/user-attachments/assets/7c4e8af4-2640-48cc-842c-9c8c2b467803)
-
+<p align="center">
+  <img src="https://github.com/user-attachments/assets/7c4e8af4-2640-48cc-842c-9c8c2b467803" alt="QR Code" width="200"/>
+</p>
 ---
 
 ## ⚠️ Notes
@@ -46,15 +47,3 @@ Or scan the QR code below to open in **Expo Go** on your mobile device:
 - 🚧 Improved iOS UI support  
 - 🚧 Push notifications for urgent safety alerts  
 - 🚧 Offline emergency access  
-
----
-
-## 🤝 Contributing
-
-We welcome contributions! Please fork the repo, create a branch, and submit a pull request.  
-
----
-
-## 📜 License
-
-This project is licensed under the MIT License.  
