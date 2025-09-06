@@ -1,50 +1,60 @@
-# Welcome to your Expo app 👋
+# 📱 Campus Safety App
 
-This is an [Expo](https://expo.dev) project created with [`create-expo-app`](https://www.npmjs.com/package/create-expo-app).
+A **one-stop campus safety mobile application** designed to help students and staff create a safe and responsive study space. The app ensures accessibility for all members of the campus community.  
 
-## Get started
+---
 
-1. Install dependencies
+## 🚨 Features
 
-   ```bash
-   npm install
-   ```
+- 📞 **Emergency Contacts** – Quickly reach out to campus or local authorities.  
+- 🧭 **FriendWalk** – Share your live location with friends while walking across campus.  
+- 📢 **Bulletin Board** – Stay updated with important campus safety announcements.  
+- 📑 **Emergency Procedures** – Access step-by-step safety guides during emergencies.  
+- 🗺 **Campus Map** – Navigate the campus efficiently.  
+- 🔜 **More Features Coming Soon!**
 
-2. Start the app
+---
 
-   ```bash
-   npx expo start
-   ```
+## 🌐 Preview the App
 
-In the output, you'll find options to open the app in a
+🔗 [Preview on Web](https://campus-safety-app2--8d5wnn6k7d.expo.app/)  
 
-- [development build](https://docs.expo.dev/develop/development-builds/introduction/)
-- [Android emulator](https://docs.expo.dev/workflow/android-studio-emulator/)
-- [iOS simulator](https://docs.expo.dev/workflow/ios-simulator/)
-- [Expo Go](https://expo.dev/go), a limited sandbox for trying out app development with Expo
+Or scan the QR code below to open in **Expo Go** on your mobile device:  
 
-You can start developing by editing the files inside the **app** directory. This project uses [file-based routing](https://docs.expo.dev/router/introduction).
+![QR Code](https://github.com/user-attachments/assets/7c4e8af4-2640-48cc-842c-9c8c2b467803)
 
-## Get a fresh project
+---
 
-When you're ready, run:
+## ⚠️ Notes
 
-```bash
-npm run reset-project
-```
+- The current **UI is optimized for Android devices**.  
+- Desktop viewing is supported but **layout may not appear as intended**.  
+- A **mobile application build** will be available soon.  
 
-This command will move the starter code to the **app-example** directory and create a blank **app** directory where you can start developing.
+---
 
-## Learn more
+## 🛠️ Tech Stack
 
-To learn more about developing your project with Expo, look at the following resources:
+- [React Native](https://reactnative.dev/)  
+- [Expo](https://expo.dev/)  
 
-- [Expo documentation](https://docs.expo.dev/): Learn fundamentals, or go into advanced topics with our [guides](https://docs.expo.dev/guides).
-- [Learn Expo tutorial](https://docs.expo.dev/tutorial/introduction/): Follow a step-by-step tutorial where you'll create a project that runs on Android, iOS, and the web.
+---
 
-## Join the community
+## 📌 Roadmap
 
-Join our community of developers creating universal apps.
+- ✅ Core safety features (contacts, procedures, bulletin board)  
+- 🚧 Improved iOS UI support  
+- 🚧 Push notifications for urgent safety alerts  
+- 🚧 Offline emergency access  
 
-- [Expo on GitHub](https://github.com/expo/expo): View our open source platform and contribute.
-- [Discord community](https://chat.expo.dev): Chat with Expo users and ask questions.
+---
+
+## 🤝 Contributing
+
+We welcome contributions! Please fork the repo, create a branch, and submit a pull request.  
+
+---
+
+## 📜 License
+
+This project is licensed under the MIT License.  
