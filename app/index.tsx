@@ -37,6 +37,14 @@ export default function Home() {
   const [friendModalVisible, setFriendModalVisible] = useState(false);
   const [newFriend, setNewFriend] = useState("");
 
+  //dummy bulletin data
+  const [bulletins] = useState([
+  { id: "1", title: "Suspicious Activity", description: "Sus individual spotted gooning near library, 12 PM.", time: "5h ago" },
+  { id: "2", title: "Lost Wallet", description: "Black Note reported near cafeteria.", time: "5h ago" },
+  { id: "3", title: "Entrance Obstruction", description: "Maintenance at SHDL tomorrow, use backdoor for entry.", time: "1d ago" },
+  ]);
+  
+
   const MakePhoneCall = (number: string) => {
     if (!signedIn) {
       Alert.alert(
@@ -288,6 +296,53 @@ export default function Home() {
             </Text>
           </TouchableOpacity>
         </View>
+
+
+        {/* Bulletin Board */}
+        
+        <View className="w-full bg-white rounded-2xl shadow-lg p-4 mb-8">
+           
+            <View className="flex-row items-center justify-between mb-4">
+                    <Text className="text-xl font-bold text-blue-800">📌 Bulletin Board</Text>
+
+                    <View className="flex-row items-center bg-gray-100 px-3 py-1 rounded-lg w-40">
+                      <TextInput
+                        placeholder="Search..."
+                        placeholderTextColor="#9ca3af"
+                        className="flex-1 text-sm text-gray-700"
+                      />
+                    </View>
+                  </View>
+
+         
+          {bulletins.map((item) => (
+            <View key={item.id} className="border-b border-gray-200 pb-3 mb-3">
+            <Link
+              href ={{ 
+               pathname: "/posts/[id]",
+               params: {
+                id: item.id,
+                title: item.title,
+                description: item.description,
+                time: item.time,
+              },
+            }}
+            
+            
+            
+            asChild>
+            <TouchableOpacity>
+              <Text className="text-blue-700 font-semibold">{item.title}</Text>
+            </TouchableOpacity>
+            </Link>
+              <Text className="text-sm text-gray-600">{item.description}</Text>
+              <Text className="text-xs text-gray-400 mt-1">{item.time}</Text>
+            </View>
+          ))}
+        </View>
+
+
+
 
         {/* Safety Tools Section */}
         <View className={`w-full ${cardColor} rounded-2xl shadow-lg p-5 mt-4`}>
