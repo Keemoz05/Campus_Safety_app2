@@ -1,11 +1,11 @@
 import { Link, useRouter } from "expo-router";
 import { Map } from "lucide-react-native";
 import { ScrollView, Text, TouchableOpacity, View } from "react-native";
-import { useDarkMode } from "../../DarkModeContext";
+import { useAppContext } from "../../AppContext";
 
 export default function EmergencyProcedures() {
   const router = useRouter();
-  const { darkMode } = useDarkMode();
+  const { darkMode } = useAppContext();
   const bgColor = darkMode ? "bg-gray-900" : "bg-gray-50";
   const headerBg = darkMode ? "bg-red-900" : "bg-red-600";
   const textColor = darkMode ? "text-gray-100" : "text-gray-700";

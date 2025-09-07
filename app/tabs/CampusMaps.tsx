@@ -1,10 +1,10 @@
 import React from 'react';
 import { View, Text, StyleSheet } from 'react-native';
 import { Image } from 'expo-image';
-import { useDarkMode } from '../../DarkModeContext';
+import { useAppContext } from '../../AppContext';
 
 const CampusMaps = () => {
-  const { darkMode } = useDarkMode();
+  const { darkMode } = useAppContext();
   const bgColor = darkMode ? 'bg-gray-900' : 'bg-gray-50';
   const headerBg = darkMode ? 'bg-blue-900' : 'bg-blue-600';
   const headerText = 'text-2xl font-bold text-white tracking-wider';

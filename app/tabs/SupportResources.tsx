@@ -1,9 +1,9 @@
 import React from 'react'
 import { Text, View } from 'react-native'
-import { useDarkMode } from '../../DarkModeContext'
+import { useAppContext } from '../../AppContext'
 
 const SupportResources = () => {
-  const { darkMode } = useDarkMode()
+  const { darkMode } = useAppContext()
   const bgColor = darkMode ? "bg-gray-900" : "bg-gray-50"
   const headerBg = darkMode ? "bg-blue-900" : "bg-blue-600"
   const textColor = darkMode ? "text-gray-100" : "text-gray-700"

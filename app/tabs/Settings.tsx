@@ -1,12 +1,12 @@
 import { useState, useEffect } from "react";
 import { SafeAreaView, ScrollView, Switch, Text, View, Button } from "react-native";
-import { useDarkMode } from "../../DarkModeContext";
+import { useAppContext } from "../../AppContext";
 import { schedulePushNotification } from "../../utils/notifications";
 import { getNotificationsEnabled, setNotificationsEnabled as saveNotificationPreference } from "../../utils/storage";
 import * as Notifications from 'expo-notifications';
 
 export default function Settings() {
-  const { darkMode, setDarkMode } = useDarkMode();
+  const { darkMode, setDarkMode } = useAppContext();
   const [notificationsEnabled, setNotificationsEnabled] = useState(true);
 
   useEffect(() => {

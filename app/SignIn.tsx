@@ -1,10 +1,10 @@
 import { useRouter } from "expo-router";
 import React, { useState } from "react";
 import { Alert, Text, TextInput, TouchableOpacity, View } from "react-native";
-import { useDarkMode } from "../DarkModeContext";
+import { useAppContext } from "../AppContext";
 
 export default function SignIn() {
-  const { darkMode } = useDarkMode();
+  const { darkMode, signIn } = useAppContext();
   const bgColor = darkMode ? "bg-gray-900" : "bg-gray-50";
   const cardColor = darkMode ? "bg-gray-800" : "bg-white";
   const textColor = darkMode ? "text-gray-100" : "text-gray-900";
@@ -18,7 +18,7 @@ export default function SignIn() {
   const handleSignIn = () => {
     // Dummy authentication logic
     if (username && password) {
-      // You can add real authentication here
+      signIn(role);
       if (role === "student") {
         router.replace("/"); // Go to home
       } else {

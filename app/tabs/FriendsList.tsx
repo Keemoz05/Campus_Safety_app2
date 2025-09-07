@@ -1,10 +1,10 @@
 import { useRouter } from "expo-router";
 import React, { useState } from "react";
 import { FlatList, Pressable, Text, TextInput, TouchableOpacity, View } from "react-native";
-import { useDarkMode } from "../../DarkModeContext";
+import { useAppContext } from "../../AppContext";
 
 export default function FriendsList() {
-  const { darkMode } = useDarkMode();
+  const { darkMode } = useAppContext();
   const router = useRouter();
   const bgColor = darkMode ? "bg-gray-900" : "bg-gray-50";
   const cardColor = darkMode ? "bg-gray-800" : "bg-white";

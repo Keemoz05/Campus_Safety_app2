@@ -1,4 +1,4 @@
-import { Link } from "expo-router";
+import { Link, useRouter } from "expo-router";
 import { EllipsisVertical, FileText, Heart, House, Map, Shield, Users } from "lucide-react-native";
 import { useState } from "react";
 import {
@@ -14,11 +14,13 @@ import {
   Text,
   TextInput,
   TouchableOpacity,
-  View
+  View,
+  Image
 } from "react-native";
-import { useDarkMode } from "../DarkModeContext";
+import { useAppContext } from "../AppContext";
 export default function Home() {
-  const { darkMode } = useDarkMode();
+  const { darkMode, signedIn, signIn, signOut } = useAppContext();
+  const router = useRouter();
   const bgColor = darkMode ? "bg-gray-900" : "bg-gray-50";
   const textColor = darkMode ? "text-gray-100" : "text-gray-900";
   const cardColor = darkMode ? "bg-gray-800" : "bg-white";
@@ -30,7 +32,6 @@ export default function Home() {
   const [role, setRole] = useState<"student" | "security" | null>(null);
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
-  const [signedIn, setSignedIn] = useState<null | "student" | "security">(null);
 
   // Friends list state
   const [friends, setFriends] = useState<string[]>(["Alice", "Bob"]);
@@ -46,21 +47,13 @@ export default function Home() {
   
 
   const MakePhoneCall = (number: string) => {
-    if (!signedIn) {
-      Alert.alert(
-        "Sign In Required",
-        "Please sign in as a student or security to use this feature.",
-        [{ text: "OK" }]
-      );
-      return;
-    }
     Linking.openURL(`tel:${number}`);
   };
 
   const handleSignIn = () => {
     // Dummy sign-in logic
     if (username && password && role) {
-      setSignedIn(role);
+      signIn(role);
       setModalVisible(false);
       setUsername("");
       setPassword("");
@@ -69,8 +62,7 @@ export default function Home() {
   };
 
   const handleSignOut = () => {
-    setSignedIn(null);
-    Alert.alert("Signed Out", "You have been signed out.");
+    signOut();
   };
 
   const handleAddFriend = () => {
@@ -82,6 +74,18 @@ export default function Home() {
 
   const handleRemoveFriend = (name: string) => {
     setFriends(friends.filter(f => f !== name));
+  };
+
+  const handleProtectedLink = (href: string) => {
+    if (!signedIn) {
+      Alert.alert(
+        "Sign In Required",
+        "Please sign in to use this feature.",
+        [{ text: "OK" }]
+      );
+    } else {
+      router.push(href);
+    }
   };
 
   return (
@@ -227,9 +231,7 @@ export default function Home() {
         {/* Header */}
         <View className="flex-row items-center mb-8 justify-between">
           <View className="flex-row items-center">
-            <View className="w-14 h-14 bg-red-600 rounded-full items-center justify-center mr-4 shadow-lg">
-              <Text className="text-white font-bold text-xl">S</Text>
-            </View>
+            <Image source={require("../assets/images/mmu_logo.png")} className="w-14 h-14 mr-4" resizeMode="contain" />
             <Text className={`text-2xl font-bold ${textColor}`}>
               Campus Safety App
             </Text>
@@ -300,23 +302,23 @@ export default function Home() {
 
         {/* Bulletin Board */}
         
-        <View className="w-full bg-white rounded-2xl shadow-lg p-4 mb-8">
+        <View className={`w-full ${cardColor} rounded-2xl shadow-lg p-4 mb-8`}>
            
             <View className="flex-row items-center justify-between mb-4">
-                    <Text className="text-xl font-bold text-blue-800">📌 Bulletin Board</Text>
+                    <Text className={`text-xl font-bold ${textColor}`}>📌 Bulletin Board</Text>
 
-                    <View className="flex-row items-center bg-gray-100 px-3 py-1 rounded-lg w-40">
+                    <View className={`flex-row items-center ${inputBg} px-3 py-1 rounded-lg w-40`}>
                       <TextInput
                         placeholder="Search..."
-                        placeholderTextColor="#9ca3af"
-                        className="flex-1 text-sm text-gray-700"
+                        placeholderTextColor={darkMode ? "#a3a3a3" : "#737373"}
+                        className={`flex-1 text-sm ${inputText}`}
                       />
                     </View>
                   </View>
 
          
           {bulletins.map((item) => (
-            <View key={item.id} className="border-b border-gray-200 pb-3 mb-3">
+            <View key={item.id} className={`border-b ${darkMode ? 'border-gray-700' : 'border-gray-200'} pb-3 mb-3`}>
             <Link
               href ={{ 
                pathname: "/posts/[id]",
@@ -327,16 +329,13 @@ export default function Home() {
                 time: item.time,
               },
             }}
-            
-            
-            
             asChild>
             <TouchableOpacity>
-              <Text className="text-blue-700 font-semibold">{item.title}</Text>
+              <Text className={`font-semibold ${darkMode ? 'text-blue-400' : 'text-blue-700'}`}>{item.title}</Text>
             </TouchableOpacity>
             </Link>
-              <Text className="text-sm text-gray-600">{item.description}</Text>
-              <Text className="text-xs text-gray-400 mt-1">{item.time}</Text>
+              <Text className={`text-sm ${textColor}`}>{item.description}</Text>
+              <Text className={`text-xs ${darkMode ? 'text-gray-400' : 'text-gray-500'} mt-1`}>{item.time}</Text>
             </View>
           ))}
         </View>
@@ -352,61 +351,82 @@ export default function Home() {
 
           <View className="flex-row flex-wrap justify-between">
             <Link href="/tabs/EmergencyProcedures" asChild>
-              <TouchableOpacity className="w-[48%] aspect-square bg-red-100 rounded-xl items-center justify-center mb-4 active:opacity-80 shadow">
+              <TouchableOpacity className="w-[48%] bg-red-100 rounded-xl items-center justify-center mb-4 active:opacity-80 shadow p-4">
                 <Shield size={32} color="#b91c1c" />
                 <Text className="text-gray-800 font-medium mt-2 text-center">
                   Emergency Procedures
                 </Text>
-              </TouchableOpacity>
-            </Link>
-
-            <Link href="/tabs/FriendWalk" asChild>
-              <TouchableOpacity className="w-[48%] aspect-square bg-blue-100 rounded-xl items-center justify-center mb-4 active:opacity-80 shadow">
-                <Users size={32} color="#1d4ed8" />
-                <Text className="text-gray-800 font-medium mt-2 text-center">
-                  FriendWalk
+                <Text className="text-gray-600 text-xs text-center mt-1">
+                  Step-by-step guides for emergencies.
                 </Text>
               </TouchableOpacity>
             </Link>
 
-            <Link href="/tabs/ReportATip" asChild>
-              <TouchableOpacity className="w-[48%] aspect-square bg-yellow-100 rounded-xl items-center justify-center mb-4 active:opacity-80 shadow">
-                <FileText size={32} color="#ca8a04" />
-                <Text className="text-gray-800 font-medium mt-2 text-center">
-                  Report a Tip
-                </Text>
-              </TouchableOpacity>
-            </Link>
+            <TouchableOpacity
+              className="w-[48%] bg-blue-100 rounded-xl items-center justify-center mb-4 active:opacity-80 shadow p-4"
+              onPress={() => handleProtectedLink("/tabs/FriendWalk")}
+            >
+              <Users size={32} color="#1d4ed8" />
+              <Text className="text-gray-800 font-medium mt-2 text-center">
+                FriendWalk
+              </Text>
+              <Text className="text-gray-600 text-xs text-center mt-1">
+                Share your location with a friend.
+              </Text>
+            </TouchableOpacity>
+
+            <TouchableOpacity
+              className="w-[48%] bg-yellow-100 rounded-xl items-center justify-center mb-4 active:opacity-80 shadow p-4"
+              onPress={() => handleProtectedLink("/tabs/ReportATip")}
+            >
+              <FileText size={32} color="#ca8a04" />
+              <Text className="text-gray-800 font-medium mt-2 text-center">
+                Report a Tip
+              </Text>
+              <Text className="text-gray-600 text-xs text-center mt-1">
+                Anonymously report a concern.
+              </Text>
+            </TouchableOpacity>
 
             <Link href="/tabs/CampusMaps" asChild>
-              <TouchableOpacity className="w-[48%] aspect-square bg-green-100 rounded-xl items-center justify-center mb-4 active:opacity-80 shadow">
+              <TouchableOpacity className="w-[48%] bg-green-100 rounded-xl items-center justify-center mb-4 active:opacity-80 shadow p-4">
                 <Map size={32} color="#15803d" />
                 <Text className="text-gray-800 font-medium mt-2 text-center">
                   Campus Maps
+                </Text>
+                <Text className="text-gray-600 text-xs text-center mt-1">
+                  Navigate the campus safely.
                 </Text>
               </TouchableOpacity>
             </Link>
             
             
             <Link href="/tabs/SupportResources" asChild>
-              <TouchableOpacity className="w-[48%] aspect-square bg-pink-100 rounded-xl items-center justify-center mb-4 active:opacity-80 shadow">
+              <TouchableOpacity className="w-[48%] bg-pink-100 rounded-xl items-center justify-center mb-4 active:opacity-80 shadow p-4">
                 <Heart size={32} color="#be123c" />
                 <Text className="text-gray-800 font-medium mt-2 text-center">
                   Support Resources
+                </Text>
+                <Text className="text-gray-600 text-xs text-center mt-1">
+                  Find help and support services.
                 </Text>
               </TouchableOpacity>
             </Link>
 
             <Link href="/tabs/SafetyToolbox" asChild>
-              <TouchableOpacity className="w-[48%] aspect-square bg-purple-100 rounded-xl items-center justify-center mb-4 active:opacity-80 shadow">
+              <TouchableOpacity className="w-[48%] bg-purple-100 rounded-xl items-center justify-center mb-4 active:opacity-80 shadow p-4">
                 <House size={32} color="#6b21a8" />
                 <Text className="text-gray-800 font-medium mt-2 text-center">
                   Safety Toolbox
+                </Text>
+                <Text className="text-gray-600 text-xs text-center mt-1">
+                  Access safety tools and resources.
                 </Text>
               </TouchableOpacity>
             </Link>
           </View>
         </View>
+        <View className="h-16" />
       </ScrollView>
     </SafeAreaView>
   );

@@ -1,19 +1,27 @@
 import { Stack } from "expo-router";
-import { DarkModeProvider } from "../DarkModeContext";
+import { AppProvider, useAppContext } from "../AppContext";
 import { BottomNavBar } from "./components/BottomNavBar";
-import { View } from "react-native";
+import { View, StatusBar } from "react-native";
+
+function AppLayout() {
+  const { darkMode } = useAppContext();
+  return (
+    <View style={{ flex: 1 }}>
+      <StatusBar barStyle={darkMode ? 'light-content' : 'dark-content'} />
+      <Stack
+        screenOptions={{
+          headerShown: false,
+        }}
+      />
+      <BottomNavBar />
+    </View>
+  )
+}
 
 export default function Layout() {
   return (
-    <DarkModeProvider>
-      <View style={{ flex: 1 }}>
-        <Stack
-          screenOptions={{
-            headerShown: false,
-          }}
-        />
-        <BottomNavBar />
-      </View>
-    </DarkModeProvider>
+    <AppProvider>
+      <AppLayout />
+    </AppProvider>
   );
 }
