@@ -2,6 +2,7 @@ import { Link, useRouter } from "expo-router";
 import { Map } from "lucide-react-native";
 import { ScrollView, Text, TouchableOpacity, View } from "react-native";
 import { useAppContext } from "../../AppContext";
+import BackButton from "../../components/BackButton";
 
 export default function EmergencyProcedures() {
   const router = useRouter();
@@ -12,6 +13,7 @@ export default function EmergencyProcedures() {
 
   return (
     <ScrollView className={`flex-1 ${bgColor}`}>
+      <BackButton />
       {/* Header */}
       <View
         className={`pt-12 pb-5 ${headerBg} items-center border-b border-gray-200 shadow`}
@@ -23,14 +25,6 @@ export default function EmergencyProcedures() {
 
       {/* Content */}
       <View className="flex-1 p-6 items-center">
-        {/* Back Button */}
-        <TouchableOpacity
-          onPress={() => router.back()}
-          className="absolute top-2.5 left-2.5 bg-white px-4 py-2 rounded-xl shadow active:opacity-80"
-        >
-          <Text className="text-red-600 text-lg font-semibold">← Back</Text>
-        </TouchableOpacity>
-
         <Text className={`text-lg mb-6 mt-8 text-center ${textColor}`}>
           Be sure you are comfortable with all the emergency procedures below
           before heading out! These plans are available offline.

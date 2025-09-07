@@ -1,6 +1,7 @@
 import React from 'react'
 import { ScrollView, Text, View } from 'react-native'
 import { useAppContext } from '../../AppContext'
+import BackButton from "../../components/BackButton";
 
 const SafetyToolbox = () => {
   const { darkMode } = useAppContext()
@@ -10,6 +11,7 @@ const SafetyToolbox = () => {
 
   return (
     <ScrollView className={`flex-1 ${bgColor}`}>
+      <BackButton />
       <View className={`pt-12 pb-5 ${headerBg} items-center border-b border-gray-200 shadow`}>
         <Text className="text-2xl font-bold text-white tracking-wider">Safety Toolbox</Text>
       </View>

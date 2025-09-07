@@ -2,6 +2,7 @@ import { useRouter } from "expo-router";
 import React, { useState } from "react";
 import { FlatList, Pressable, Text, TextInput, TouchableOpacity, View } from "react-native";
 import { useAppContext } from "../../AppContext";
+import BackButton from "../../components/BackButton";
 
 export default function FriendsList() {
   const { darkMode } = useAppContext();
@@ -32,6 +33,7 @@ export default function FriendsList() {
       <View className={`pt-12 pb-5 bg-blue-600 items-center border-b border-gray-200 shadow`}>
         <Text className="text-2xl font-bold text-white tracking-wider">Friends List</Text>
       </View>
+      <BackButton />
       <View className={`flex-1 p-6`}>
         <FlatList
           data={friends}

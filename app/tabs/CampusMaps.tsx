@@ -2,6 +2,7 @@ import React from 'react';
 import { View, Text, StyleSheet } from 'react-native';
 import { Image } from 'expo-image';
 import { useAppContext } from '../../AppContext';
+import BackButton from "../../components/BackButton";
 
 const CampusMaps = () => {
   const { darkMode } = useAppContext();
@@ -13,6 +14,7 @@ const CampusMaps = () => {
 
   return (
     <View className={`flex-1 ${bgColor}`}>
+      <BackButton />
       <View className={`pt-12 pb-5 ${headerBg} items-center border-b border-gray-200 shadow`}>
         <Text className={headerText}>Campus Map</Text>
       </View>

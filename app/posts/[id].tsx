@@ -2,7 +2,7 @@ import { router, useLocalSearchParams } from "expo-router";
 import React from 'react';
 import { Text, TouchableOpacity, View } from 'react-native';
 import { useAppContext } from "../../AppContext";
-
+import BackButton from "../../components/BackButton";
 
 
 export default function PostDetails() {
@@ -30,12 +30,7 @@ export default function PostDetails() {
         </Text>
       </View>
     
-        <TouchableOpacity
-                  onPress={() => router.back()}
-                  className="absolute top-2.5 left-2.5 bg-white px-4 py-2 rounded-xl shadow active:opacity-80 mt-8"
-                >
-                  <Text className="text-black-600 text-lg font-semibold">← Back</Text>
-        </TouchableOpacity>
+        <BackButton />
         
     <View className={`flex-1 ${cardColor} p-6 mt-12`}>
       <Text className={`text-2xl font-bold ${textColor}`}>{title}</Text> 

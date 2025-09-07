@@ -18,6 +18,7 @@ import {
   Image
 } from "react-native";
 import { useAppContext } from "../AppContext";
+import BackButton from "../components/BackButton";
 export default function Home() {
   const { darkMode, signedIn, signIn, signOut } = useAppContext();
   const router = useRouter();
@@ -230,36 +231,35 @@ export default function Home() {
       <ScrollView className="px-5 py-8">
         {/* Header */}
         <View className="flex-row items-center mb-8 justify-between">
-          <View className="flex-row items-center">
+          <View className="flex-row items-center flex-shrink-1">
             <Image source={require("../assets/images/mmu_logo.png")} className="w-14 h-14 mr-4" resizeMode="contain" />
-            <Text className={`text-2xl font-bold ${textColor}`}>
+            <Text className={`text-2xl font-bold ${textColor} flex-shrink-1`}>
               Campus Safety App
             </Text>
           </View>
-          {/* Discrete sign-in button */}
-          <TouchableOpacity
-            className="p-2 rounded-full active:opacity-80"
-            onPress={() => setModalVisible(true)}
-            accessibilityLabel={signedIn ? `Signed in as ${signedIn}` : "Sign in"}
-          >
-            <EllipsisVertical size={28} color={darkMode ? "#f3f4f6" : "#374151"} />
-          </TouchableOpacity>
-        </View>
-
-        {/* Optionally, show signed-in status as a small badge and sign out */}
-        {signedIn && (
-          <View className="flex-row justify-end items-center mb-2 space-x-2">
-            <Text className="text-xs px-3 py-1 rounded-full bg-blue-600 text-white">
-              {signedIn === "student" ? "Student" : "Security"}
-            </Text>
+          {/* Sign-in button or status */}
+          {!signedIn ? (
             <TouchableOpacity
-              className="ml-2 px-2 py-1 rounded bg-gray-300 active:opacity-80"
-              onPress={handleSignOut}
+              className="px-4 py-2 rounded-xl bg-blue-600 active:opacity-80"
+              onPress={() => setModalVisible(true)}
+              accessibilityLabel="Sign in"
             >
-              <Text className="text-xs text-gray-800 font-semibold">Sign Out</Text>
+              <Text className="text-white font-semibold">Sign In</Text>
             </TouchableOpacity>
-          </View>
-        )}
+          ) : (
+            <View className="flex-col items-center">
+              <Text className="text-xs px-3 py-1 rounded-full bg-blue-600 text-white">
+                {signedIn === "student" ? "Student" : "Security"}
+              </Text>
+              <TouchableOpacity
+                className="px-2 py-1 rounded bg-gray-300 active:opacity-80 mt-1"
+                onPress={handleSignOut}
+              >
+                <Text className="text-xs text-gray-800 font-semibold">Sign Out</Text>
+              </TouchableOpacity>
+            </View>
+          )}
+        </View>
 
         {/* Alert if not signed in */}
         {!signedIn && (

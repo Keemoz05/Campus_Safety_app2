@@ -1,10 +1,12 @@
 import Constants from "expo-constants";
 import { ScrollView, StyleSheet, View } from "react-native";
 import { WebView } from "react-native-webview";
+import BackButton from "../../../components/BackButton";
 
 export default function App() {
   return (
     <View style={styles.screen}>
+      <BackButton />
       <ScrollView contentContainerStyle={styles.scroll}>
         <View style={styles.box}>
           <WebView

@@ -2,6 +2,7 @@ import { useRouter } from "expo-router";
 import React, { useState } from "react";
 import { Alert, Text, TextInput, TouchableOpacity, View } from "react-native";
 import { useAppContext } from "../AppContext";
+import BackButton from "../components/BackButton";
 
 export default function SignIn() {
   const { darkMode, signIn } = useAppContext();
@@ -31,6 +32,7 @@ export default function SignIn() {
 
   return (
     <View className={`flex-1 items-center justify-center ${bgColor}`}>
+      <BackButton />
       <View className={`w-11/12 max-w-md rounded-2xl shadow-lg p-8 ${cardColor}`}>
         <Text className={`text-2xl font-bold mb-6 text-center ${textColor}`}>Sign In</Text>
         <View className="flex-row justify-center mb-6">

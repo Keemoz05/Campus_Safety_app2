@@ -4,6 +4,7 @@ import { useAppContext } from "../../AppContext";
 import { schedulePushNotification } from "../../utils/notifications";
 import { getNotificationsEnabled, setNotificationsEnabled as saveNotificationPreference } from "../../utils/storage";
 import * as Notifications from 'expo-notifications';
+import BackButton from "../../components/BackButton";
 
 export default function Settings() {
   const { darkMode, setDarkMode } = useAppContext();
@@ -32,6 +33,7 @@ export default function Settings() {
 
   return (
     <SafeAreaView className={`flex-1 ${bgColor}`}>
+      <BackButton />
       <ScrollView className="flex-1 px-5 py-8">
         <Text className={`text-2xl font-bold ${textColor} mb-8`}>Settings</Text>
 

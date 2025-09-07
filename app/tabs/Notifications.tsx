@@ -1,6 +1,7 @@
 import React from 'react';
 import { View, Text, SafeAreaView, StatusBar, Platform } from 'react-native';
 import { useAppContext } from '../../AppContext';
+import BackButton from "../../components/BackButton";
 
 const Notifications = () => {
   const { darkMode } = useAppContext();
@@ -15,6 +16,7 @@ const Notifications = () => {
         paddingTop: Platform.OS === 'android' ? StatusBar.currentHeight : 0,
       }}
     >
+      <BackButton />
       <View className={`pt-12 pb-5 ${headerBg} items-center border-b border-gray-200 shadow`}>
         <Text className={headerText}>Notifications</Text>
       </View>

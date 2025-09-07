@@ -1,6 +1,7 @@
 import { useRouter } from "expo-router";
 import { Button, Text, View } from "react-native";
 import { useAppContext } from "../../AppContext";
+import BackButton from "../../components/BackButton";
 
 export default function FriendWalk() {
   const router = useRouter();
@@ -11,6 +12,7 @@ export default function FriendWalk() {
 
   return (
     <View className={`flex-1 ${bgColor}`}>
+      <BackButton />
       <View className={`pt-12 pb-5 ${headerBg} items-center border-b border-gray-200 shadow`}>
         <Text className="text-2xl font-bold text-white tracking-wider">
           FriendWalk
