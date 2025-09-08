@@ -17,14 +17,13 @@ A **one-stop campus safety mobile application** designed to help students and st
 
 ## 🌐 Preview the App
 
-🔗 [Preview on Web](https://campus-safety-app2--8d5wnn6k7d.expo.app/)  
+🔗 [Preview on Web](https://campus-safety-app2--g183lahzxy.expo.app/)  
 
 Or scan the QR code below on your mobile device:  
 
 <p align="center">
-  <img src="https://github.com/user-attachments/assets/7c4e8af4-2640-48cc-842c-9c8c2b467803" alt="QR Code" width="200"/>
+  <img src="https://github.com/user-attachments/assets/0c837995-c3ee-4012-a4a6-f910933a76d3" alt="QR Code" width="200"/>
 </p>
-
 ## ⚠️ Notes
 
 - The current **UI is optimized for Android devices**.  
