@@ -44,4 +44,6 @@ Or scan the QR code below on your mobile device:
 - ✅ Core safety features (contacts, procedures, bulletin board)  
 - 🚧 Improved iOS UI support  
 - 🚧 Push notifications for urgent safety alerts  
-- 🚧 Offline emergency access  
+- 🚧 Offline emergency access
+
+  <div class="tenor-gif-embed" data-postid="1879411192175791821" data-share-method="host" data-aspect-ratio="0.917671" data-width="100%"><a href="https://tenor.com/view/british-cop-screaming-screaming-sad-gif-1879411192175791821">British Cop Screaming Sad GIF</a>from <a href="https://tenor.com/search/british+cop+screaming-gifs">British Cop Screaming GIFs</a></div> <script type="text/javascript" async src="https://tenor.com/embed.js"></script>
